@@ -2,8 +2,6 @@ import React from "react";
 import Sidebar from "@/components/sidebar";
 import MobileNav from "@/components/mobileNav";
 import Header from "@/components/header";
-import Search from "@/components/search";
-import FileUploader from "@/components/fileUploader";
 import { getCurrentUser } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
 

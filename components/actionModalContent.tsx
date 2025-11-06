@@ -1,13 +1,13 @@
-import { FileModal } from '@/types/file'
+import { FileDocument } from '@/types'
 import React from 'react'
 import Thumbnail from './thumbnail'
 import FormattedDateAndTime from './FormattedDateAndTime'
 import { convertFileSize, formatDateTime } from '@/lib/utils'
 
 
-export const ImageThumbnail = ({file}: {file: FileModal}) => (
+export const ImageThumbnail = ({file}: {file: FileDocument}) => (
   <div className = 'file-details-thumbnail'>
-    <Thumbnail type = {file.type} extension = {file.extention} url = {file.Url} />
+    <Thumbnail type = {file.type} extension = {file.extention || ''} url = {file.url} />
     <div className = 'flex flex-col'></div>
     <p className = 'suntitle-2 mb-1'>{file.name}</p>
     <FormattedDateAndTime date = {file.$createdAt} className = 'caption' />
@@ -23,8 +23,8 @@ const DetailRow =({label , value}: {label: string , value: string}) => (
 )
 
 
-export const FileDetails = ({file}: {file: FileModal}) => {
-    {return (
+export const FileDetails = ({file}: {file: FileDocument}) => {
+    return (
       <>
         <ImageThumbnail file={file} />
         <DetailRow label="Format:" value={file.type} />
@@ -33,5 +33,5 @@ export const FileDetails = ({file}: {file: FileModal}) => {
         <DetailRow label="Created On:" value={formatDateTime(file.$createdAt)} />
         <DetailRow label="Updated On:" value={formatDateTime(file.$updatedAt)} />
       </>
-    );}
+    );
 }

@@ -111,7 +111,7 @@ const ensureUserDocument = async (accountId: string, sessionSecret: string) => {
         },
       );
     }
-  } catch (error) {
+  } catch {
     // Don't throw here - this is a fallback operation
   }
 };
@@ -188,7 +188,7 @@ export const getCurrentUser = async () => {
     }
 
     return parseStringify(user.documents[0]);
-  } catch (error) {
+  } catch {
     return null;
   }
 };

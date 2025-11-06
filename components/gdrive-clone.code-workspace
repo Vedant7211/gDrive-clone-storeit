@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "gdrive-clone",
+			"path": ".."
+		},
+		{
+			"name": "public",
+			"path": "../../Downloads/StoreIt_Storage_Platform-main/public"
+		}
+	],
+	"settings": {}
+}

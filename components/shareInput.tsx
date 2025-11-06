@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { FileModal } from "@/types/file";
+import { FileDocument } from "@/types";
 import { ImageThumbnail } from "./actionModalContent";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import Image from "next/image";
 
 interface Props {
-  file: FileModal;
+  file: FileDocument;
   onInputChange: React.Dispatch<React.SetStateAction<string[]>>;
   onRemove: (email: string) => void;
   emails: string[];

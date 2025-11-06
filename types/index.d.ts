@@ -9,7 +9,7 @@ export interface ActionType {
 }
 
 export interface SearchParamProps {
-  params?: Promise<SegmentParams>;
+  params?: Promise<{ [key: string]: string | string[] | undefined }>;
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 

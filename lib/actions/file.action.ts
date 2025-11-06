@@ -36,17 +36,16 @@ export const uploadFile = async ({
     const fileDocument = {
       type: getFileType(bucketFile.name).type,
       name: bucketFile.name,
-      url: constructFileUrl(bucketFile.$id),
+      Url: constructFileUrl(bucketFile.$id),
       extention: getFileType(bucketFile.name).extension,
       size: bucketFile.sizeOriginal,
       owner: ownerId,
       accountId,
       users: [],
       bucketFileId: bucketFile.$id,
-      fullName: bucketFile.name,
     };
 
-    console.log(fileDocument);
+    console.log("fileDocument", fileDocument);
 
     const newFile = await databases
       .createDocument(

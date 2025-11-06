@@ -6,11 +6,9 @@ import { SIDEBAR_ITEMS } from "@/constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { avatarPlaceholderUrl } from "@/constants";
-import { email } from "zod";
 
-const Sidebar = ({ fullName, avatar, email }: { fullName: string; avatar: string, email: string }) => {
+const Sidebar = ({ fullName, email }: { fullName: string; email: string }) => {
   const pathname = usePathname();
-  const isActive = (path: string) => pathname === path;
   return (
     <aside className="sidebar">
       <Link href="/">

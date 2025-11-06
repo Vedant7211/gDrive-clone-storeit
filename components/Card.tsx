@@ -1,25 +1,19 @@
-import { Models } from "node-appwrite";
 import Link from "next/link";
 import Thumbnail from "@/components/thumbnail";
-import { convertFileSize } from "@/lib/utils";
+import { convertFileSize, constructFileUrl } from "@/lib/utils";
 import FormattedDateTime from "@/components/FormattedDateAndTime";
 import ActionDropdown from "@/components/ActionsDropdown";
-import { FileModal } from "@/types/file";
+import { FileDocument } from "@/types";
 
-interface CardProps extends FileModal {
-    owner?: {
-        fullName: string;
-    };
-}
-
-const Card = ({ file }: { file: CardProps }) => {
+const Card = ({ file }: { file: FileDocument }) => {
+  const fileUrl = file.url || (file.bucketFileId ? constructFileUrl(file.bucketFileId) : "#");
   return (
-    <Link href={file.Url} target="_blank" className="file-card">
+    <Link href={fileUrl} target="_blank" className="file-card">
       <div className="flex justify-between">
         <Thumbnail
           type={file.type}
-          extension={file.extention}      
-          url={file.Url}
+          extension={file.extention || ''}      
+          url={fileUrl}
           className="!size-20"
           imageClassName="!size-11"
         />
@@ -38,7 +32,7 @@ const Card = ({ file }: { file: CardProps }) => {
         />
         {file.owner && (
           <p className="caption truncate-2-lines text-light-200">
-            By: {file.owner.fullName}
+            By: {file.owner}
           </p>
         )}
       </div>

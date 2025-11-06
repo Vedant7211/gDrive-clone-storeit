@@ -61,7 +61,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
       setAccountId(user.accountId);
       console.log(user);
-    } catch (error) {
+    } catch { 
       setErrorMessage("Authentication failed. Please try again.");
     } finally {
       setIsLoading(false);

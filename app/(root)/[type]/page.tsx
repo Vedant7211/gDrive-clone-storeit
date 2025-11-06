@@ -1,14 +1,15 @@
 import React from "react";
 import { getFiles } from "@/lib/actions/file.action";
 import Card from "@/components/Card";
-import { FileModal } from "@/types/file";
+import { FileDocument } from "@/types";
 import { getFileTypesParams } from "@/lib/utils";
+import { SearchParamProps, FileType } from "@/types";
 
-const page = async ({searchParams, params }: SearchParamProps) => {
+// Force dynamic rendering to prevent prerender errors
+export const dynamic = 'force-dynamic';
+
+const page = async ({ params }: SearchParamProps) => {
   const type = ((await params)?.type as string) || "";
-  const searchText = ((await searchParams)?.searchText as string) || "";
-  const sort = ((await searchParams)?.sort as string) || "$createdAt-desc";
-  const limit = ((await searchParams)?.limit as string) || "10";
   const types = getFileTypesParams(type) as FileType[];
   const files = await getFiles({  types, searchText : '', sort: '$createdAt-desc', limit: 10 });
 
@@ -24,7 +25,7 @@ const page = async ({searchParams, params }: SearchParamProps) => {
       </section>
       {files.total > 0 ? (
         <section className="flex flex-wrap gap-6">
-          {files.documents.map((file: FileModal) => (
+          {files.documents.map((file: FileDocument) => (
             <Card key={file.$id} file={file} />
           ))}
         </section>

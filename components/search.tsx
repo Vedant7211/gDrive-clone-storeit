@@ -3,12 +3,13 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { getFiles } from "@/lib/actions/file.action";
 import Thumbnail from "@/components/thumbnail";
 import FormattedDateAndTime from "@/components/FormattedDateAndTime";
 import { useDebounce } from "use-debounce";
 import { FileDocument } from "@/types";
+
 const Search = () => {
   const [query, setQuery] = useState("");
   const searchParams = useSearchParams();
@@ -17,7 +18,6 @@ const Search = () => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const path = usePathname();
   const [debouncedQuery] = useDebounce(query, 300);
 
   useEffect(() => {
@@ -96,7 +96,7 @@ const Search = () => {
                   <div className="flex cursor-pointer items-center gap-4">
                     <Thumbnail
                       type={file.type}
-                      extension={file.extention}
+                      extension={file.extention || ''}
                       url={file.url}
                       className="size-9 min-w-9"
                     />

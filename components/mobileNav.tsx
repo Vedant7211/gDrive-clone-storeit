@@ -4,7 +4,6 @@ import {
     Sheet,
     SheetContent,
     SheetDescription,
-    SheetHeader,
     SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet"
@@ -27,7 +26,7 @@ interface Props {
     email: string;
   }
 
-const MobileNav = ( { ownerId, fullName, avatar, email ,accountId }: Props ) => {
+const MobileNav = ( { ownerId, fullName, email ,accountId }: Props ) => {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
     

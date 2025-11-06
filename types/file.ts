@@ -13,7 +13,9 @@ export interface FileModal extends Models.Document {
   $id: string;
   $updatedAt: string;
   bucketFileId: string;
-  owner: string;
+  owner: {
+    fullName: string;
+  };
   accountId: string;
   $sequence: number;  // Made required
   $collectionId: string;

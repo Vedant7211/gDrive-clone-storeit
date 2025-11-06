@@ -18,7 +18,7 @@ import {
 import { actionsDropdownItems } from "@/constants";
 import Link from "next/link";
 import { constructDownloadUrl } from "@/lib/utils";
-// FileDocument is available globally from types/index.d.ts
+import { FileDocument } from "@/types";
 import Image from "next/image";
 import { DialogDescription } from "@radix-ui/react-dialog";
 import { Input } from "./ui/input";
@@ -76,7 +76,7 @@ const ActionsDropdown = ({ file }: { file: FileDocument }) => {
         const success = await renameFile(
           file.$id,
           newName.trim(),
-          file.extention,
+          file.extention || '',
           path
         );
         console.log("Rename result:", success);
